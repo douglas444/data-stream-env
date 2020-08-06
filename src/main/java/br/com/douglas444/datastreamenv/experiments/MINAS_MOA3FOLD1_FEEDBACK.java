@@ -26,11 +26,11 @@ public class MINAS_MOA3FOLD1_FEEDBACK {
     private static final int NOVELTY_DETECTION_NUMBER_OF_CLUSTERS = 100;
     private static final long RANDOM_GENERATOR_SEED = 0;
 
-    private static final MINASInterceptor INTERCEPTOR_COLLECTION = new MINASInterceptor();
+    private static final MINASInterceptor INTERCEPTOR = new MINASInterceptor();
 
     public static void main(String[] args) throws IOException {
 
-        INTERCEPTOR_COLLECTION.MICRO_CLUSTER_EXPLAINED_INTERCEPTOR.define((context) -> {
+        INTERCEPTOR.MICRO_CLUSTER_EXPLAINED.define((context) -> {
 
             if (Feedback.validateConceptDrift(
                     context.getClosestMicroCluster(),
@@ -45,7 +45,7 @@ public class MINAS_MOA3FOLD1_FEEDBACK {
 
         });
 
-        INTERCEPTOR_COLLECTION.MICRO_CLUSTER_EXPLAINED_BY_ASLEEP_INTERCEPTOR.define((context) -> {
+        INTERCEPTOR.MICRO_CLUSTER_EXPLAINED_BY_ASLEEP.define((context) -> {
 
             if (Feedback.validateConceptDrift(
                     context.getClosestMicroCluster(),
@@ -61,7 +61,7 @@ public class MINAS_MOA3FOLD1_FEEDBACK {
 
         });
 
-        INTERCEPTOR_COLLECTION.MICRO_CLUSTER_UNEXPLAINED_INTERCEPTOR.define((context) -> {
+        INTERCEPTOR.MICRO_CLUSTER_UNEXPLAINED.define((context) -> {
 
             if (context.getClosestMicroCluster() == null) {
 
@@ -93,7 +93,7 @@ public class MINAS_MOA3FOLD1_FEEDBACK {
                 HEATER_NUMBER_OF_CLUSTERS_PER_LABEL,
                 NOVELTY_DETECTION_NUMBER_OF_CLUSTERS,
                 RANDOM_GENERATOR_SEED,
-                INTERCEPTOR_COLLECTION);
+                INTERCEPTOR);
 
         final MINASController minasController = minasBuilder.build();
 

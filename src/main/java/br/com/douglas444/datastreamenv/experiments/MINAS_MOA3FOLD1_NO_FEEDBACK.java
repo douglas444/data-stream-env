@@ -8,10 +8,7 @@ import br.com.douglas444.minas.MINASBuilder;
 import br.com.douglas444.minas.MINASController;
 import br.com.douglas444.mltk.datastructure.DynamicConfusionMatrix;
 
-import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
-import java.net.URL;
 
 public class MINAS_MOA3FOLD1_NO_FEEDBACK {
 
