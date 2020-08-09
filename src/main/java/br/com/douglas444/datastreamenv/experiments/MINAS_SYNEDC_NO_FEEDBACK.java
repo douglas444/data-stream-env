@@ -71,7 +71,7 @@ public class MINAS_SYNEDC_NO_FEEDBACK {
         dsFileReader = new DSFileReader(",", Util.getFileReader("SynEDC20D40Norm_fold1_onl"));
         DSClassifierExecutor.start(minasController, dsFileReader, true, 1000);
 
-        DynamicConfusionMatrix dcm = minasController.getDynamicConfusionMatrixString();
+        DynamicConfusionMatrix dcm = minasController.getDynamicConfusionMatrix();
         System.out.println("\n" + dcm.toString());
 
     }

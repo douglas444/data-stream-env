@@ -103,7 +103,7 @@ public class MINAS_MOA3FOLD1_FEEDBACK {
         dsFileReader = new DSFileReader(",", Util.getFileReader("MOA3_fold1_onl"));
         DSClassifierExecutor.start(minasController, dsFileReader, true, 1000);
 
-        DynamicConfusionMatrix dcm = minasController.getDynamicConfusionMatrixString();
+        DynamicConfusionMatrix dcm = minasController.getDynamicConfusionMatrix();
         System.out.println("\n" + dcm.toString());
 
     }

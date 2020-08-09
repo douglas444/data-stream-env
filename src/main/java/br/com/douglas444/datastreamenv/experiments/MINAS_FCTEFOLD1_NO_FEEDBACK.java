@@ -6,7 +6,6 @@ import br.com.douglas444.dsframework.DSClassifierExecutor;
 import br.com.douglas444.dsframework.DSFileReader;
 import br.com.douglas444.minas.MINASBuilder;
 import br.com.douglas444.minas.MINASController;
-import br.com.douglas444.minas.interceptor.MINASInterceptor;
 import br.com.douglas444.mltk.datastructure.DynamicConfusionMatrix;
 
 import java.io.IOException;
@@ -49,7 +48,7 @@ public class MINAS_FCTEFOLD1_NO_FEEDBACK {
         dsFileReader = new DSFileReader(",", Util.getFileReader("fcTe_fold1_onl"));
         DSClassifierExecutor.start(minasController, dsFileReader, true, 1000);
 
-        DynamicConfusionMatrix dcm = minasController.getDynamicConfusionMatrixString();
+        DynamicConfusionMatrix dcm = minasController.getDynamicConfusionMatrix();
         System.out.println("\n" + dcm.toString());
 
     }
