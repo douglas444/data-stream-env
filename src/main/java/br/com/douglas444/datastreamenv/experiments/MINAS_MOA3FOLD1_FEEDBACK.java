@@ -36,11 +36,11 @@ public class MINAS_MOA3FOLD1_FEEDBACK {
                     context.getClosestMicroCluster(),
                     context.getTargetMicroCluster(),
                     context.getTargetSamples(),
-                    context.getMinas().getDecisionModel())) {
+                    context.getDecisionModelMicroClusters())) {
 
-                context.getMinas().addExtension(context.getTargetMicroCluster(), context.getClosestMicroCluster());
+                context.getAddExtension().accept(context.getTargetMicroCluster(), context.getClosestMicroCluster());
             } else {
-                context.getMinas().addNovelty(context.getTargetMicroCluster());
+                context.getAddNovelty().accept(context.getTargetMicroCluster());
             }
 
         });
@@ -51,12 +51,12 @@ public class MINAS_MOA3FOLD1_FEEDBACK {
                     context.getClosestMicroCluster(),
                     context.getTargetMicroCluster(),
                     context.getTargetSamples(),
-                    context.getMinas().getDecisionModel())) {
+                    context.getDecisionModelMicroClusters())) {
 
-                context.getMinas().awake(context.getClosestMicroCluster());
-                context.getMinas().addExtension(context.getTargetMicroCluster(), context.getClosestMicroCluster());
+                context.getAwake().accept(context.getClosestMicroCluster());
+                context.getAddExtension().accept(context.getTargetMicroCluster(), context.getClosestMicroCluster());
             } else {
-                context.getMinas().addNovelty(context.getTargetMicroCluster());
+                context.getAddNovelty().accept(context.getTargetMicroCluster());
             }
 
         });
@@ -65,18 +65,18 @@ public class MINAS_MOA3FOLD1_FEEDBACK {
 
             if (context.getClosestMicroCluster() == null) {
 
-                context.getMinas().addNovelty(context.getTargetMicroCluster());
+                context.getAddNovelty().accept(context.getTargetMicroCluster());
 
             } else if (Feedback.validateConceptEvolution(
                     context.getClosestMicroCluster(),
                     context.getTargetMicroCluster(),
                     context.getTargetSamples(),
-                    context.getMinas().getDecisionModel())) {
+                    context.getDecisionModelMicroClusters())) {
 
-                context.getMinas().addNovelty(context.getTargetMicroCluster());
+                context.getAddNovelty().accept(context.getTargetMicroCluster());
             } else {
-                context.getMinas().awake(context.getClosestMicroCluster());
-                context.getMinas().addExtension(context.getTargetMicroCluster(), context.getClosestMicroCluster());
+                context.getAwake().accept(context.getClosestMicroCluster());
+                context.getAddExtension().accept(context.getTargetMicroCluster(), context.getClosestMicroCluster());
             }
 
         });
