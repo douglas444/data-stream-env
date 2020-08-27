@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<minas xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/douglas444/minas/master/minas.xsd">
+    <seed>0</seed>
+    <updateDecisionModel>true</updateDecisionModel>
+    <noveltyDetection>
+        <maxTemporaryMemorySize>2000</maxTemporaryMemorySize>
+        <minimumClusterSize>20</minimumClusterSize>
+        <numberOfClusters>100</numberOfClusters>
+    </noveltyDetection>
+    <window>
+        <size>4000</size>
+        <sampleLifeSpan>4000</sampleLifeSpan>
+        <microClusterLifeSpan>4000</microClusterLifeSpan>
+    </window>
+    <heater>
+        <capacity>47045</capacity>
+        <initialBufferSize>6000</initialBufferSize>
+        <numberOfClustersPerLabel>100</numberOfClustersPerLabel>
+    </heater>
+</minas>

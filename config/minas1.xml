@@ -1,8 +1,0 @@
-<?xml version="1.0"?>
-<!DOCTYPE minas SYSTEM "https://raw.githubusercontent.com/douglas444/minas/master/minas.dtd">
-
-<minas seed="0" updateDecisionModel="false">
-    <noveltyDetection maxTemporaryMemorySize="2000" minimumClusterSize="20" numberOfClusters="100"/>
-    <window size="4000" sampleLifeSpan="4000" microClusterLifeSpan="4000"/>
-    <heater capacity="10000" initialBufferSize="1000" numberOfClustersPerLabel="100"/>
-</minas>
