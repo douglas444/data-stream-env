@@ -12,23 +12,28 @@ import java.util.stream.Collectors;
 
 public class ECHOBayesianErrorEstimationExperiment {
 
-    private final static double BAYESIAN_ERROR_ESTIMATION_LOWER_LIMIT = 0.5;
-    private final static double BAYESIAN_ERROR_ESTIMATION_UPPER_LIMIT = 0.5;
+    private final static double BAYESIAN_ERROR_ESTIMATION_LOWER_LIMIT = 0.95;
+    private final static double BAYESIAN_ERROR_ESTIMATION_UPPER_LIMIT = 0.95;
 
     private final static List<ConceptClassification> results = new ArrayList<>();
 
     public static void main(String[] args) {
 
         Miner.interceptor.NOVEL_CLASS_EMERGENCE.define((context) -> {
-            results.add(generateResult(context, ConceptClassification.Type.NOVELTY));
+            if (!context.getTargetSamples().isEmpty()) {
+                results.add(generateResult(context, ConceptClassification.Type.NOVELTY));
+            }
             context.getDefaultAction().run();
         });
 
         Miner.interceptor.CLASSIFIER_UPDATE.define((context) -> {
-            results.add(generateResult(context, ConceptClassification.Type.KNOWN));
+            if (!context.getTargetSamples().isEmpty()) {
+                results.add(generateResult(context, ConceptClassification.Type.KNOWN));
+            }
             context.getDefaultAction().run();
         });
 
+        Miner.random = new Random(0);
         Miner.main(args);
 
         ConceptClassification.printStatistics(results);

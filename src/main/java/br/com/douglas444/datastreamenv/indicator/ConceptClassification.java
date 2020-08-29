@@ -218,6 +218,26 @@ public class ConceptClassification {
         System.out.println(String.format("|NOVELTY|%7d|%7d|", algorithmTrueNovelty, algorithmFalseKnown));
         System.out.println(String.format("|KNOWN  |%7d|%7d|", algorithmFalseNovelty, algorithmTrueKnown));
 
+        System.out.println("Indicator confusion matrix line relative");
+        System.out.println("        |NOVELTY|KNOWN  |?      |");
+        System.out.println(String.format("|NOVELTY|%6.1f%s|%6.1f%s|%6.1f%s|",
+                100 * indicatorTrueNovelty / safeDenominator(noveltyCount), "%",
+                100 * indicatorFalseKnown / safeDenominator(noveltyCount), "%",
+                100 * indicatorNotClassifiedNovelty / safeDenominator(noveltyCount), "%"));
+        System.out.println(String.format("|KNOWN  |%6.1f%s|%6.1f%s|%6.1f%s|",
+                100 * indicatorFalseNovelty / safeDenominator(results.size() - noveltyCount), "%",
+                100 * indicatorTrueKnown / safeDenominator(results.size() - noveltyCount), "%",
+                100 * indicatorNotClassifiedKnown / safeDenominator(results.size() - noveltyCount), "%"));
+
+        System.out.println("\nAlgorithm confusion matrix line relative");
+        System.out.println("        |NOVELTY|KNOWN  |");
+        System.out.println(String.format("|NOVELTY|%6.1f%s|%6.1f%s|",
+                100 * algorithmTrueNovelty / safeDenominator(noveltyCount), "%",
+                100 * algorithmFalseKnown / safeDenominator(noveltyCount), "%"));
+        System.out.println(String.format("|KNOWN  |%6.1f%s|%6.1f%s|",
+                100 * algorithmFalseNovelty / safeDenominator(results.size() - noveltyCount), "%",
+                100 * algorithmTrueKnown / safeDenominator(results.size() - noveltyCount), "%"));
+
     }
 
     private static double safeDenominator(final double value) {

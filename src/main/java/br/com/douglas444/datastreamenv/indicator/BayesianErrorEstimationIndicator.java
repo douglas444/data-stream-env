@@ -1,6 +1,7 @@
 package br.com.douglas444.datastreamenv.indicator;
 
 import br.com.douglas444.mltk.datastructure.Sample;
+import org.apache.commons.math3.exception.NotANumberException;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -36,10 +37,6 @@ public class BayesianErrorEstimationIndicator {
             centroidsByLabel.get(centroid.getY()).add(centroid);
         });
 
-        if (centroidsByLabel.size() == 1) {
-            return 1;
-        }
-
         final HashMap<Integer, Sample> closestCentroidByLabel = new HashMap<>();
 
         centroidsByLabel.forEach((label, centroids) -> {
@@ -59,6 +56,14 @@ public class BayesianErrorEstimationIndicator {
                 .min(Double::compare)
                 .orElse(0.0);
 
+        if (Double.isInfinite(n)) {
+            return 0;
+        }
+
+        if (centroidsByLabel.size() == 1) {
+            return 1;
+        }
+
         final double d = closestCentroidByLabel
                 .values()
                 .stream()
@@ -67,8 +72,13 @@ public class BayesianErrorEstimationIndicator {
 
         double max = 1 - 1 / (double) closestCentroidByLabel.keySet().size();
 
-        return  (1 - n / d) / max;
+        final double result = (1 - n / d) / max;
 
+        if (Double.isNaN(result)) {
+            throw new NotANumberException();
+        }
+
+        return result;
     }
 
 }

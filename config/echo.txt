@@ -1,3 +1,8 @@
 Program arguments for echo experiments:
 
 -M 100 -S 2000 -L 5 -T 4000 -C 2000 -F ./dataset/arff/MOA3
+-M 100 -S 9758 -L 5 -T 19516 -C 9758 -F ./dataset/arff/KDDTe5Classes
+-M 100 -S 9419 -L 5 -T 18838 -C 9419 -F ./dataset/arff/covtypeOrigNorm
+-M 100 -S 6000 -L 5 -T 12000 -C 6000 -F ./dataset/arff/fcTe
+-M 100 -S 5000 -L 5 -T 10000 -C 5000 -F ./dataset/arff/SynD
+-M 100 -S 8000 -L 5 -T 16000 -C 8000 -F ./dataset/arff/SynEDC20D40Norm
