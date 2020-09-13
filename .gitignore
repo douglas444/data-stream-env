@@ -15,3 +15,13 @@ dataset/echo/covtypeOrigNorm.arff
 dataset/echo/fcTe.arff
 dataset/echo/KDDTe5Classes.arff
 dataset/echo/SynEDC20D40Norm.arff
+
+dataset/anynovel/train/covtypeOrigNorm_train.arff
+dataset/anynovel/train/fcTe_train.arff
+dataset/anynovel/train/KDDTe5Classes_train.arff
+dataset/anynovel/train/SynEDC20D40Norm_train.arff
+
+dataset/anynovel/test/covtypeOrigNorm_test.arff
+dataset/anynovel/test/fcTe_test.arff
+dataset/anynovel/test/KDDTe5Classes_test.arff
+dataset/anynovel/test/SynEDC20D40Norm_test.arff

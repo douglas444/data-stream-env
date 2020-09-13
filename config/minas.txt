@@ -1,0 +1,8 @@
+Program arguments for minas experiments:
+
+./config/minas_fcTe.xml ./dataset/minas/fcTe.csv
+./config/minas_covtypeOrigNorm.xml ./dataset/minas/covtypeOrigNorm.csv
+./config/minas_SynD.xml ./dataset/minas/SynD.csv
+./config/minas_KDDTe5Classes.xml ./dataset/minas/KDDTe5Classes.csv
+./config/minas_SynEDC20D40Norm.xml ./dataset/minas/SynEDC20D40Norm.csv
+./config/minas_MOA3.xml ./dataset/minas/MOA3.csv
