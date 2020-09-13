@@ -1,4 +1,4 @@
-package br.com.douglas444.datastreamenv.experiment.minas;
+package br.com.douglas444.datastreamenv.experiment;
 
 
 import br.com.douglas444.datastreamenv.*;

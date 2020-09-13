@@ -1,11 +1,11 @@
-package br.com.douglas444.datastreamenv.experiment.echo;
+package br.com.douglas444.datastreamenv.experiment;
 
 import br.com.douglas444.datastreamenv.Oracle;
 import br.com.douglas444.datastreamenv.indicator.BayesianErrorEstimationIndicator;
 import br.com.douglas444.datastreamenv.indicator.ConceptClassification;
 import br.com.douglas444.mltk.datastructure.Sample;
-import interceptor.context.ClusteredConceptContext;
-import mineClass.Miner;
+import echo.interceptor.context.ClusteredConceptContext;
+import echo.mineClass.Miner;
 
 import java.util.*;
 import java.util.stream.Collectors;

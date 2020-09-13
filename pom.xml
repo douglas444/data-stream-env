@@ -31,12 +31,12 @@
         </dependency>
         <dependency>
             <groupId>br.com.douglas444</groupId>
-            <artifactId>echo</artifactId>
+            <artifactId>echo-original</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>br.com.douglas444</groupId>
-            <artifactId>echo-original</artifactId>
+            <artifactId>AnyNovel</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>

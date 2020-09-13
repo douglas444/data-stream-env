@@ -4,7 +4,6 @@ import br.com.douglas444.minas.MicroCluster;
 import br.com.douglas444.minas.MicroClusterCategory;
 import br.com.douglas444.minas.interceptor.context.NoveltyDetectionContext;
 import br.com.douglas444.mltk.datastructure.Sample;
-import interceptor.context.ClusteredConceptContext;
 
 import java.util.Arrays;
 import java.util.List;
@@ -45,7 +44,33 @@ public class Oracle {
 
     }
 
-    public static double noveltyPurity(ClusteredConceptContext context) {
+    public static double noveltyPurity(echo.interceptor.context.ClusteredConceptContext context) {
+
+        final List<Sample> samples = context.getTargetSamples().stream().map(attributes -> {
+            final double[] x = Arrays.copyOfRange(attributes, 0, attributes.length - 1);
+            final Integer y = (int) attributes[attributes.length - 1];
+            return new Sample(x, y);
+        }).collect(Collectors.toList());
+
+        if (samples.isEmpty()) {
+            throw new IllegalArgumentException();
+        }
+
+        final Set<Integer> knownLabels = context.getKnownLabels()
+                .stream()
+                .map(Double::intValue)
+                .collect(Collectors.toSet());
+
+        final int sentence = samples.stream()
+                .map(sample -> isNovelty(sample, knownLabels))
+                .map(isNovel -> isNovel ? 1 : -1)
+                .reduce(0, Integer::sum);
+
+        return sentence / (double) samples.size();
+
+    }
+
+    public static double noveltyPurity(anynovel.interceptor.context.ClusteredConceptContext context) {
 
         final List<Sample> samples = context.getTargetSamples().stream().map(attributes -> {
             final double[] x = Arrays.copyOfRange(attributes, 0, attributes.length - 1);
