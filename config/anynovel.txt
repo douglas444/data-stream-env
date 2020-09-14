@@ -1,0 +1,8 @@
+Program arguments for anynovel experiments:
+
+-BLM train ./dataset/anynovel/train/MOA3_train.arff -test ./dataset/anynovel/test/MOA3_test.arff ./config/anynovel_MOA3_parameters.txt
+-BLM train ./dataset/anynovel/train/covtypeOrigNorm_train.arff -test ./dataset/anynovel/test/covtypeOrigNorm_test.arff ./config/anynovel_covtypeOrigNorm_parameters.txt
+-BLM train ./dataset/anynovel/train/fcTe_train.arff -test ./dataset/anynovel/test/fcTe_test.arff ./config/anynovel_fcTe_parameters.txt
+-BLM train ./dataset/anynovel/train/KDDTe5Classes_train.arff -test ./dataset/anynovel/test/KDDTe5Classes_test.arff ./config/anynovel_KDDTe5Classes_parameters.txt
+-BLM train ./dataset/anynovel/train/SynD_train.arff -test ./dataset/anynovel/test/SynD_test.arff ./config/anynovel_SynD_parameters.txt
+-BLM train ./dataset/anynovel/train/SynEDC20D40Norm_train.arff -test ./dataset/anynovel/test/SynEDC20D40Norm_test.arff ./config/anynovel_SynEDC20D40Norm_parameters.txt

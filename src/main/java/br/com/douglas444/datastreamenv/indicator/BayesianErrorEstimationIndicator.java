@@ -1,7 +1,6 @@
 package br.com.douglas444.datastreamenv.indicator;
 
 import br.com.douglas444.mltk.datastructure.Sample;
-import org.apache.commons.math3.exception.NotANumberException;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -75,7 +74,7 @@ public class BayesianErrorEstimationIndicator {
         final double result = (1 - n / d) / max;
 
         if (Double.isNaN(result)) {
-            throw new NotANumberException();
+            throw new IllegalStateException("Result of estimateBayesError is not a number");
         }
 
         return result;

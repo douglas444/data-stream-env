@@ -3,8 +3,10 @@
 *.res
 *.tmpres
 *.iml
+*.csv
 .idea/
 target/
+AnyNovelModels/
 
 dataset/minas/covtypeOrigNorm.csv
 dataset/minas/fcTe.csv
