@@ -23,16 +23,16 @@ public class AnyNovel {
 
     public static void main(String[] args) throws Exception {
 
-        //Defines the interceptor for the case of novel segment detection
-        AnyNovelLauncher.interceptor.NOVELTY_SEGMENT.define((context) -> {
+        //Defines the interceptor for the case of novel cluster detection
+        AnyNovelLauncher.interceptor.NOVEL_CLUSTER.define((context) -> {
             if (!context.getTargetSamples().isEmpty()) {
                 process(context, ConceptCategory.NOVELTY);
             }
             context.getDefaultAction().run();
         });
 
-        //Defines the interceptor for the case of known segment detection
-        AnyNovelLauncher.interceptor.KNOWN_SEGMENT.define((context) -> {
+        //Defines the interceptor for the case of known cluster detection
+        AnyNovelLauncher.interceptor.KNOWN_CLUSTER.define((context) -> {
             if (!context.getTargetSamples().isEmpty()) {
                 process(context, ConceptCategory.KNOWN);
             }
@@ -62,10 +62,10 @@ public class AnyNovel {
                 .map(Double::intValue)
                 .collect(Collectors.toSet());
 
-        //Calculate the novelty purity value of the segment
+        //Calculate the novelty purity value of the cluster
         final double noveltyPurity = Oracle.noveltyPurity(targetSamples, knownLabels);
 
-        //The real concept category is given by the novelty purity value of the segment.
+        //The real concept category is given by the novelty purity value of the cluster.
         final ConceptCategory realCategory;
         if (noveltyPurity >= 0) {
             realCategory = ConceptCategory.NOVELTY;
@@ -73,7 +73,7 @@ public class AnyNovel {
             realCategory = ConceptCategory.KNOWN;
         }
 
-        //The centroid of the target segment comes from the context as a array, so here we convert it to a Sample object
+        //The centroid of the target cluster comes from the context as a array, so here we convert it to a Sample object
         final Sample targetConceptCentroid = new Sample(context.getTargetClusterCentroid(), -1);
 
         //The centroids of the known concepts comes from the context as arrays, so here we convert then to Sample objects
