@@ -1,5 +1,6 @@
-package br.com.douglas444.datastreamenv.indicator;
+package br.com.douglas444.datastreamenv.strategy1;
 
+import br.com.douglas444.datastreamenv.common.ConceptCategory;
 import br.com.douglas444.mltk.datastructure.Sample;
 
 import java.util.ArrayList;
@@ -7,23 +8,31 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 
-public class BayesianErrorEstimationIndicator {
+//Bayesian error estimation
+public class Strategy1 {
 
-    public static ConceptClassification.Type calculateIndicatorGuess(final double bayesianErrorEstimation,
-                                                                     final double lowerLimit,
-                                                                     final double upperLimit) {
+    public static ConceptCategory calculateIndicatorPrediction(final Sample targetConceptCentroid,
+                                                               final List<Sample> knownConceptsCentroids,
+                                                               final double lowerLimit,
+                                                               final double upperLimit) {
+        double bayesianErrorEstimation;
+        if (knownConceptsCentroids.isEmpty()) {
+            bayesianErrorEstimation = 1;
+        } else {
+            bayesianErrorEstimation = Strategy1.estimateBayesianError(targetConceptCentroid, knownConceptsCentroids);
+        }
 
         if (bayesianErrorEstimation > upperLimit) {
-            return ConceptClassification.Type.NOVELTY;
+            return ConceptCategory.NOVELTY;
         } else if (bayesianErrorEstimation < lowerLimit) {
-            return ConceptClassification.Type.KNOWN;
+            return ConceptCategory.KNOWN;
         } else {
-            return ConceptClassification.Type.NULL;
+            return ConceptCategory.NULL;
         }
 
     }
 
-    public static double estimateBayesError(final Sample target, final List<Sample> targetConcepts) {
+    private static double estimateBayesianError(final Sample target, final List<Sample> targetConcepts) {
 
         if (targetConcepts.isEmpty()) {
             return 1;

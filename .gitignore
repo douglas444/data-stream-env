@@ -7,6 +7,7 @@
 .idea/
 target/
 AnyNovelModels/
+*_log
 
 dataset/minas/covtypeOrigNorm.csv
 dataset/minas/fcTe.csv
