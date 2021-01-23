@@ -1,3 +1,6 @@
+This repository is outdated and will be kept online for log purposes only.
+Starting from the date of this commit, the project will continue at https://github.com/douglas444/active-pattern-learning
+
 # data-stream-env
 Strategies based on active learning and semi supervised learning for classification, novelty detection and concept drift detection over data streams.
 
